@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>UID - Dashboard</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="dashboard-body">
+    <!-- Sidebar -->
+    <nav class="sidebar">
+        <div class="sidebar-header">
+            <div class="header-row">
+                <h2>UID</h2>
+            </div>
+            <p class="user-welcome">Welcome, Admin!</p>
+        </div>
+        
+        <ul class="sidebar-menu">
+            <li class="active">
+                <a href="dashboard.html"><i class="fas fa-home"></i>Dashboard</a>
+            </li>
+            <li>
+                <a href="billing.html"><i class="fas fa-calculator"></i>Billing</a>
+            </li>
+            <li>
+                <a href="orders.html"><i class="fas fa-list-alt"></i>Orders</a>
+            </li>
+            <li>
+                <a href="reports.html"><i class="fas fa-chart-bar"></i>Reports</a>
+            </li>
+            <li>
+                <a href="reset.html"><i class="fas fa-trash-restore"></i>Reset System</a>
+            </li>
+            <li class="logout">
+                <a href="#" id="logoutBtn"><i class="fas fa-sign-out-alt"></i>Logout</a>
+            </li>
+        </ul>
+    </nav>
+    
+    <!-- Main Content -->
+    <main class="main-content">
+        <!-- Parallax Header -->
+        <div class="parallax-header">
+            <div class="parallax-content">
+                <h1>Dashboard</h1>
+                <p>Manage your billing system efficiently</p>
+            </div>
+        </div>
+
+        <!-- Stats Grid -->
+        <div class="stats-grid">
+            <div class="stat-card">
+                <i class="fas fa-rupee-sign"></i>
+                <h3>Completed Sales</h3>
+                <p class="stat-value" id="totalSales">₹0.00</p>
+            </div>
+            <div class="stat-card">
+                <i class="fas fa-clock"></i>
+                <h3>Pending Orders</h3>
+                <p class="stat-value" id="pendingOrders">0</p>
+            </div>
+            <div class="stat-card">
+                <i class="fas fa-utensils"></i>
+                <h3>Orders Today</h3>
+                <p class="stat-value" id="ordersToday">0</p>
+            </div>
+        </div>
+
+        <!-- Quick Actions -->
+        <div class="quick-actions">
+            <h2>Quick Actions</h2>
+            <div class="action-buttons">
+                <button class="action-btn" onclick="window.location.href='billing.html'" type="button">
+                    <i class="fas fa-plus"></i>
+                    New Bill
+                </button>
+                <button class="action-btn" onclick="window.location.href='orders.html'" type="button">
+                    <i class="fas fa-history"></i>
+                    View Orders
+                </button>
+                <button class="action-btn" onclick="window.location.href='reports.html'" type="button">
+                    <i class="fas fa-file-invoice"></i>
+                    Generate Report
+                </button>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-logo">UID Project</div>
+            <div class="footer-links">
+                <a href="#" class="footer-link">Documentation</a>
+                <a href="#" class="footer-link">Privacy Policy</a>
+                <a href="#" class="footer-link">Terms of Service</a>
+            </div>
+            <div class="footer-social">
+                <a href="#" class="social-icon"><i class="fab fa-facebook"></i></a>
+                <a href="#" class="social-icon"><i class="fab fa-twitter"></i></a>
+                <a href="#" class="social-icon"><i class="fab fa-instagram"></i></a>    
+            </div>
+            <div class="footer-copyright">
+                &copy; 2024-25 UID End-Semester Project.
+            </div>
+        </div>
+    </footer>
+
+    <script src="dashboard.js"></script>
+</body>
+</html>
