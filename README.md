@@ -62,24 +62,21 @@ A comprehensive web-based billing system designed for restaurants, developed as 
 ```
 ├── assets/
 │   └── images/
-├── about.html
-├── index.html
-├── auth.js
-├── billing.html
-├── billing.js
-├── contact.html
-├── dashboard.html
-├── dashboard.js
-├── orders.html
-├── orders.js
-├── privacy.html
-├── reports.html
-├── reports.js
-├── reset.html
-├── reset.js
-├── style.css
-├── terms.html
-└── theme.js
+├── .vscode/
+├── index.html          # Landing page
+├── auth.js            # Authentication logic
+├── billing.html       # Billing interface
+├── billing.js         # Billing system logic
+├── dashboard.html     # Admin dashboard
+├── dashboard.js       # Dashboard functionality
+├── orders.html        # Order management
+├── orders.js          # Order processing logic
+├── reports.html       # Reporting interface
+├── reports.js         # Report generation logic
+├── reset.html         # System reset interface
+├── reset.js           # Reset functionality
+├── style.css          # Global styles
+└── README.md          # Project documentation
 ```
 
 ## Setup and Installation
@@ -89,7 +86,7 @@ A comprehensive web-based billing system designed for restaurants, developed as 
 3. Access the application through a modern web browser
 4. Default login credentials:
    - Username: admin
-   - Password: admin123
+   - Password: admin@123
 
 ## Usage
 
@@ -121,9 +118,10 @@ A comprehensive web-based billing system designed for restaurants, developed as 
 ## Security Features
 
 - Session-based authentication
-- Secure data storage
+- Secure data storage using localStorage
 - Protected routes
 - Input validation
+- XSS prevention
 
 ## Browser Support
 
@@ -131,6 +129,13 @@ A comprehensive web-based billing system designed for restaurants, developed as 
 - Firefox
 - Safari
 - Edge
+
+## Development
+
+- The project uses vanilla JavaScript for all functionality
+- CSS is organized with a component-based approach
+- All data is stored in the browser's localStorage
+- The system is designed to be easily extensible
 
 ## Future Enhancements
 
@@ -141,6 +146,9 @@ A comprehensive web-based billing system designed for restaurants, developed as 
 5. Customer Management System
 6. Online Ordering System
 7. Mobile Application
+8. Real-time order tracking
+9. Integration with payment gateways
+10. Advanced analytics and reporting
 
 ## Contributing
 
@@ -149,8 +157,3 @@ This is a semester project. For any suggestions or improvements, please contact 
 ## License
 
 This project is created for educational purposes.
-
-## Author
-
-[Your Name]
-2nd Semester Student 
