@@ -18,9 +18,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Handle form submission
     authSubmit.addEventListener('click', () => {
-        // Get and trim input values
+        // Get input values
         const username = usernameInput.value.trim();
-        const password = passwordInput.value.trim();
+        const password = passwordInput.value;
 
         // Validate inputs
         if (!username) {
@@ -45,10 +45,8 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
-    /**
-     * Displays error messages with a fade-in animation
-     * @param {string} message - The error message to display
-     */
+
+    // Displays error messages with a fade-in animation
     function showError(message) {
         authError.textContent = message;
         authError.classList.add('fade-in');

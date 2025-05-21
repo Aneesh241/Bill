@@ -14,7 +14,6 @@
         .auth-box {
             background: rgba(255, 255, 255, 0.15) !important;
             backdrop-filter: blur(12px);
-            -webkit-backdrop-filter: blur(12px);
             border: 1px solid rgba(255, 255, 255, 0.2);
             box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
         }
@@ -29,10 +28,10 @@
             min-height: 100vh;
             background-color: var(--bg-light);
             background-image: 
-                radial-gradient(at 80% 0%, hsla(189, 100%, 56%, 0.7) 0px, transparent 50%),
-                radial-gradient(at 0% 50%, hsla(355, 100%, 93%, 0.4) 0px, transparent 50%),
-                radial-gradient(at 80% 100%, hsla(340, 100%, 76%, 0.6) 0px, transparent 50%),
-                radial-gradient(at 0% 0%, hsla(222, 100%, 61%, 0.9) 0px, transparent 50%);
+                radial-gradient(at 80% 0%, hsla(189, 100%, 56%, 0.7) 0px, transparent 50%), /* top right */
+                radial-gradient(at 0% 50%, hsla(355, 100%, 93%, 0.4) 0px, transparent 50%), /* center left */
+                radial-gradient(at 80% 100%, hsla(340, 100%, 76%, 0.6) 0px, transparent 50%), /* bottom right */
+                radial-gradient(at 0% 0%, hsla(222, 100%, 61%, 0.9) 0px, transparent 50%); /* top left */
             display: flex;
             flex-direction: column;
         }
@@ -112,7 +111,7 @@
         <div class="footer-content"style="position: relative; z-index: 2;">
             <div class="footer-logo" style="color: white; text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);">UID Project</div>
             <div class="footer-links">
-                <a href="#" class="footer-link" style="color: rgba(255, 255, 255, 0.8); cursor: pointer; transition: color 0.3s ease; text-decoration: none; padding: 5px 10px;">Documentation</a>
+                <a href="#" class="footer-link" style="color: rgba(255, 255, 255, 0.8); cursor:pointer; transition: color 0.3s ease; text-decoration: none; padding: 5px 10px;">Documentation</a>
                 <a href="#" class="footer-link" style="color: rgba(255, 255, 255, 0.8); cursor: pointer; transition: color 0.3s ease; text-decoration: none; padding: 5px 10px;">Privacy Policy</a>
                 <a href="#" class="footer-link" style="color: rgba(255, 255, 255, 0.8); cursor: pointer; transition: color 0.3s ease; text-decoration: none; padding: 5px 10px;">Terms of Service</a>
             </div>

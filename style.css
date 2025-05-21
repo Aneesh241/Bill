@@ -166,7 +166,7 @@
 /* Navigation menu styles */
 .sidebar {
     width: 260px;
-    background: rgba(240, 248, 255, 0.9);
+    background: var(--card-bg);
     backdrop-filter: blur(10px);
     border-right: 1px solid rgba(0, 0, 0, 0.1);
     padding: 20px;
@@ -1805,43 +1805,6 @@ input:checked + .billing-toggle-slider:before {
         margin: 10px auto;
         width: 95%;
     }
-    
-    .payment-methods {
-        grid-template-columns: 1fr 1fr;
-        gap: 10px;
-    }
-    
-    .form-group input, 
-    .form-group textarea {
-        font-size: 16px; /* Prevents zoom on mobile */
-    }
-    
-    .items-table {
-        font-size: 12px;
-    }
-    
-    .items-table th,
-    .items-table td {
-        padding: 8px 5px;
-    }
-    
-    .bill-section {
-        width: 100%;
-    }
-    
-    .main-content {
-        margin-left: 0;
-        padding-left: 80px; /* Space for the collapsed sidebar */
-    }
-    
-    /* Make form controls touch-friendly */
-    button, 
-    .quantity-btn, 
-    input[type="checkbox"],
-    input[type="radio"] {
-        min-height: 44px;
-        min-width: 44px;
-    }
 }
 
 /* Make .hidden more forceful to avoid display issues */
@@ -2360,6 +2323,4 @@ select {
         gap: 10px;
         align-items: center;
     }
-}
-
-
+}  

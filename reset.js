@@ -7,6 +7,7 @@
  * Resets all orders and transactions by clearing the orders from localStorage
  * Shows appropriate feedback based on the context (UI or alert)
  */
+
 function resetOrders() {
     localStorage.removeItem('orders');
     
@@ -86,10 +87,5 @@ function initResetPage() {
     }
 }
 
-// If this script is loaded directly on a page, expose these functions globally
-if (typeof window !== 'undefined') {
-    window.resetOrders = resetOrders;
-    
-    // Add DOM load event listener to initialize reset page if applicable
-    document.addEventListener('DOMContentLoaded', initResetPage);
-} 
+// Initialize reset page when DOM is loaded
+document.addEventListener('DOMContentLoaded', initResetPage); 

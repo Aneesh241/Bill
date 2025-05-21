@@ -266,6 +266,25 @@ document.addEventListener('DOMContentLoaded', () => {
         modal.style.display = 'block';
     }
 
+    // Function to mark an order as completed
+    function completeOrder(orderId) {
+        if (confirm('Mark this order as completed?')) {
+            // Find the order and update its status
+            const orderIndex = orders.findIndex(order => order.id === orderId);
+            if (orderIndex !== -1) {
+                orders[orderIndex].status = 'completed';
+                
+                // Save updated orders to localStorage
+                localStorage.setItem('orders', JSON.stringify(orders));
+                
+                // Close the modal and refresh the order display
+                modal.style.display = 'none';
+                const activeFilter = document.querySelector('.filter-btn.active').dataset.status;
+                displayOrders(activeFilter === 'all' ? orders : orders.filter(order => order.status === activeFilter));
+            }
+        }
+    }
+    
     // Function to cancel an order
     function cancelOrder(orderId) {
         // Show cancellation reason modal
@@ -496,28 +515,11 @@ document.addEventListener('DOMContentLoaded', () => {
         printWindow.onload = function() {
             printWindow.print();
             // Close the window after printing (optional)
-            // printWindow.close();
+            printWindow.close();
         };
     }
 
-    // Function to mark an order as completed
-    function completeOrder(orderId) {
-        if (confirm('Mark this order as completed?')) {
-            // Find the order and update its status
-            const orderIndex = orders.findIndex(order => order.id === orderId);
-            if (orderIndex !== -1) {
-                orders[orderIndex].status = 'completed';
-                
-                // Save updated orders to localStorage
-                localStorage.setItem('orders', JSON.stringify(orders));
-                
-                // Close the modal and refresh the order display
-                modal.style.display = 'none';
-                const activeFilter = document.querySelector('.filter-btn.active').dataset.status;
-                displayOrders(activeFilter === 'all' ? orders : orders.filter(order => order.status === activeFilter));
-            }
-        }
-    }
+
 
     // Function to delete an order
     function deleteOrder(orderId) {

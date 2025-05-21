@@ -28,16 +28,8 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // Initialize dashboard with current statistics
+    // Initial load of dashboard stats
     updateDashboardStats();
-
-    // Handle order status updates
-    window.addEventListener('storage', function(e) {
-        if (e.key === 'orders') {
-            // Order data has changed, update dashboard
-            updateDashboardStats();
-        }
-    });
 });
 
 /**

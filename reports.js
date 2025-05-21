@@ -268,11 +268,4 @@ document.addEventListener('DOMContentLoaded', () => {
         if (!string) return '';
         return string.charAt(0).toUpperCase() + string.slice(1);
     }
-
-    // Add this to the DOMContentLoaded event handler in reports.js
-    // It will highlight the Reports link in the sidebar
-    document.querySelectorAll('.sidebar-menu li').forEach(item => {
-        item.classList.remove('active');
-    });
-    document.querySelector('.sidebar-menu li a[href="reports.html"]')?.parentElement.classList.add('active');
 }); 

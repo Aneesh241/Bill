@@ -56,7 +56,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 { id: 27, name: 'Dal Makhani', price: 220 },
                 { id: 28, name: 'Veg Biryani', price: 320 },
                 { id: 29, name: 'Chole Bhature', price: 180 },
-                { id: 30, name: 'Masala Dosa', price: 160 },
+                { id: 30, name: 'Masala Dosa', price: 60 },
                 { id: 31, name: 'Palak Paneer', price: 260 },
                 { id: 32, name: 'Veg Kolhapuri', price: 240 },
                 { id: 33, name: 'Malai Kofta', price: 290 },
@@ -498,12 +498,17 @@ document.addEventListener('DOMContentLoaded', () => {
         document.querySelectorAll('.payment-status .spinner').forEach(spinner => {
             spinner.style.display = 'inline-block';
         });
+
+        // Reset payment method buttons
+        document.querySelectorAll('.payment-method').forEach(method => {
+            method.classList.remove('active');
+        });
+        
+        // Reset current payment method
+        currentPaymentMethod = '';
     }
 
-    /**
-     * Simulates the payment process for a given payment method
-     * @param {string} paymentMethod - The selected payment method
-     */
+
     function simulatePayment(paymentMethod) {
         const methodLower = paymentMethod.toLowerCase();
         let statusElement, spinnerElement, successIconElement;
@@ -660,15 +665,5 @@ document.addEventListener('DOMContentLoaded', () => {
         
         // Save updated orders list
         localStorage.setItem('orders', JSON.stringify(orders));
-    }
-
-    // Initialize toggle switches
-    const alcoholicToggle = document.getElementById('alcoholicToggle');
-    if (alcoholicToggle) {
-        alcoholicToggle.checked = false;
-        const toggleLabel = document.getElementById('toggleLabel');
-        if (toggleLabel) {
-            toggleLabel.textContent = 'Non-Alcoholic';
-        }
     }
 });
