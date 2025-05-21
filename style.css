@@ -1,4 +1,7 @@
-/* Global Styles */
+/* 
+ * Global Styles
+ * Base styles and CSS variables for the entire application
+ */
 * {
     margin: 0;
     padding: 0;
@@ -6,24 +9,31 @@
     font-family: 'Poppins', sans-serif;
 }
 
+/* 
+ * CSS Variables for Theme Colors
+ * These variables control the color scheme and can be modified for different themes
+ */
 :root {
     /* Dark mode variables */
-    --primary-color: #818cf8;
-    --primary-dark: #6366f1;
-    --text-dark: #e6f2ff;
-    --text-light: #d1e3f9;
-    --bg-light: #111827;
-    --white: #1f2937;
-    --error: #f87171;
-    --card-bg: #1f2937;
-    --border-color: rgba(240, 248, 255, 0.1);
-    --shadow-color: rgba(0, 0, 0, 0.3);
-    --hover-bg: rgba(99, 102, 241, 0.2);
+    --primary-color: #818cf8;      /* Main brand color */
+    --primary-dark: #6366f1;       /* Darker shade for hover states */
+    --text-dark: #e6f2ff;          /* Primary text color */
+    --text-light: #d1e3f9;         /* Secondary text color */
+    --bg-light: #111827;           /* Background color */
+    --white: #1f2937;              /* Card/container background */
+    --error: #f87171;              /* Error message color */
+    --card-bg: #1f2937;            /* Card background color */
+    --border-color: rgba(240, 248, 255, 0.1);  /* Border color with transparency */
+    --shadow-color: rgba(0, 0, 0, 0.3);        /* Shadow color for depth */
+    --hover-bg: rgba(99, 102, 241, 0.2);       /* Background color for hover states */
 }
 
-/* Authentication Page Styles */
+/* 
+ * Authentication Page Styles
+ * Styles for the login page and authentication forms
+ */
 .auth-body {
-    min-height: 100vh;  
+    min-height: 100vh;  /* Full viewport height */
     display: flex;
     align-items: center;
     justify-content: center;
@@ -32,13 +42,13 @@
 
 .auth-container {
     width: 100%;
-    max-width: 420px;
+    max-width: 420px;  /* Maximum width for the auth container */
 }
 
 .auth-box {
     background: rgba(240, 248, 255, 0.9);
     background-color: var(--card-bg);
-    backdrop-filter: blur(10px);
+    backdrop-filter: blur(10px);  /* Frosted glass effect */
     border-radius: 20px;
     padding: 40px;
     box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
@@ -63,6 +73,7 @@
     font-size: 14px;
 }
 
+/* Form input styles */
 .form-group {
     margin-bottom: 20px;
 }
@@ -85,6 +96,7 @@
     background: rgba(240, 248, 255, 0.9);
 }
 
+/* Input focus state with animation */
 .form-group input:focus {
     outline: none;
     border-color: var(--primary-color);
@@ -92,6 +104,7 @@
     transform: translateY(-2px);
 }
 
+/* Authentication button styles */
 .auth-button {
     width: 100%;
     padding: 12px;
@@ -111,24 +124,7 @@
     box-shadow: 0 4px 12px rgba(99, 102, 241, 0.3);
 }
 
-.auth-switch {
-    text-align: center;
-    margin-top: 20px;
-    font-size: 14px;
-    color: var(--text-light);
-}
-
-.auth-switch a {
-    color: var(--primary-color);
-    text-decoration: none;
-    font-weight: 500;
-    margin-left: 4px;
-}
-
-.auth-switch a:hover {
-    text-decoration: underline;
-}
-
+/* Error message display */
 .auth-error {
     color: var(--error);
     font-size: 14px;
@@ -137,7 +133,10 @@
     min-height: 20px;
 }
 
-/* Animation Classes */
+/* 
+ * Animation Classes
+ * Reusable animation classes for various UI elements
+ */
 .fade-in {
     animation: fadeIn 0.3s ease-in-out;
 }
@@ -153,13 +152,18 @@
     }
 }
 
-/* Dashboard Styles */
+/* 
+ * Dashboard Styles
+ * Layout and components for the main dashboard
+ */
 .dashboard-body {
     display: flex;
     min-height: 100vh;
     background: var(--bg-light);
 }
 
+/* Sidebar navigation styles */
+/* Navigation menu styles */
 .sidebar {
     width: 260px;
     background: rgba(240, 248, 255, 0.9);
@@ -236,6 +240,7 @@
     background: var(--hover-bg);
 }
 
+/* Logout button specific styles */
 .sidebar-menu li.logout {
     margin-top: 30px;
     border-top: 1px solid rgba(0, 0, 0, 0.1);
@@ -250,12 +255,14 @@
     background: rgba(239, 68, 68, 0.2);
 }
 
+/* Main content area styles */
 .main-content {
     flex: 1;
     margin-left: 260px;
     padding: 0;
 }
 
+/* Parallax header styles */
 .parallax-header {
     height: 300px;
     background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('assets/images/background.jpg');
@@ -285,6 +292,7 @@
     opacity: 0.9;
 }
 
+/* Statistics cards grid layout */
 .stats-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
@@ -293,6 +301,7 @@
     margin-top: -50px;
 }
 
+/* Individual stat card styles */
 .stat-card {
     background: rgba(240, 248, 255, 0.9);
     background-color: var(--card-bg);
@@ -350,6 +359,7 @@
     color: var(--text-light);
 }
 
+/* Quick action buttons styles */
 .quick-actions {
     padding: 20px;
 }
@@ -464,6 +474,10 @@ input:checked + .billing-toggle-slider:before {
     border-bottom: 1px solid #444;
 }
 
+/* 
+ * Billing System Styles
+ * Styles for the billing interface and payment processing
+ */
 .billing-body {
     display: flex;
     min-height: 100vh;
@@ -477,7 +491,7 @@ input:checked + .billing-toggle-slider:before {
     width: 100%;
 }
 
-/* Menu Section */
+/* Menu section styles */
 .menu-section {
     flex: 1;
     background: var(--white);
@@ -486,6 +500,7 @@ input:checked + .billing-toggle-slider:before {
     overflow: hidden;
 }
 
+/* Category tabs navigation */
 .category-tabs {
     display: flex;
     gap: 10px;
@@ -571,7 +586,7 @@ input:checked + .billing-toggle-slider:before {
     background: var(--primary-dark);
 }
 
-/* Bill Section */
+/* Bill section styles */
 .bill-section {
     width: 400px;
     background: var(--white);
@@ -1250,6 +1265,29 @@ input:checked + .billing-toggle-slider:before {
     background: var(--primary-color);
     color: var(--white);
 }
+/* Delete Order Button */
+.delete-order-btn {
+    flex: 1;
+    padding: 12px;
+    border: none;
+    border-radius: 8px;
+    font-size: 14px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    transition: all 0.3s ease;
+    background: rgba(239, 68, 68, 0.1);
+    color: var(--error);
+}
+
+.delete-order-btn:hover {
+    background: var(--error);
+    color: var(--white);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px var(--shadow-color);
+}
 
 /* Reports Page Styles */
 .reports-body {
@@ -1258,49 +1296,21 @@ input:checked + .billing-toggle-slider:before {
     background: var(--bg-light);
 }
 
-.date-filter {
-    display: flex;
-    align-items: center;
-    gap: 15px;
-    padding: 20px;
+.content-header {
+    padding: 30px 20px 20px;
     background: var(--white);
     border-bottom: 1px solid rgba(0, 0, 0, 0.1);
-    flex-wrap: wrap;
 }
 
-.date-range {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-}
-
-.date-range label {
+.content-header h1 {
     color: var(--text-dark);
+    font-size: 24px;
+    margin-bottom: 5px;
+}
+
+.content-header p {
+    color: var(--text-light);
     font-size: 14px;
-}
-
-.date-range input {
-    padding: 8px 12px;
-    border: 1px solid rgba(0, 0, 0, 0.1);
-    border-radius: 8px;
-    font-size: 14px;
-}
-
-.filter-apply-btn {
-    padding: 8px 16px;
-    background: var(--primary-color);
-    color: var(--white);
-    border: none;
-    border-radius: 8px;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    display: flex;
-    align-items: center;
-    gap: 8px;
-}
-
-.filter-apply-btn:hover {
-    background: var(--primary-dark);
 }
 
 .summary-cards {
@@ -1589,24 +1599,6 @@ input:checked + .billing-toggle-slider:before {
     .payment-chart {
         flex-direction: column;
     }
-    
-    .date-filter {
-        flex-direction: column;
-        align-items: flex-start;
-    }
-    
-    .date-range {
-        width: 100%;
-    }
-    
-    .date-range input {
-        flex: 1;
-    }
-    
-    .filter-apply-btn {
-        width: 100%;
-        justify-content: center;
-    }
 }
 
 /* Complete Order Button */
@@ -1638,53 +1630,6 @@ input:checked + .billing-toggle-slider:before {
     border-bottom: 1px solid rgba(0, 0, 0, 0.1);
     display: flex;
     justify-content: flex-end;
-}
-
-/* Toggle Switch */
-.toggle-switch {
-    position: relative;
-    display: inline-flex;
-    align-items: center;
-    cursor: pointer;
-    font-size: 14px;
-    color: var(--text-dark);
-}
-
-.toggle-switch input {
-    opacity: 0;
-    width: 0;
-    height: 0;
-}
-
-.toggle-slider {
-    position: relative;
-    display: inline-block;
-    width: 40px;
-    height: 20px;
-    background-color: #a8c6e2;
-    border-radius: 20px;
-    margin-right: 10px;
-    transition: .4s;
-}
-
-.toggle-slider:before {
-    position: absolute;
-    content: "";
-    height: 16px;
-    width: 16px;
-    left: 2px;
-    bottom: 2px;
-    background-color: #f0f8ff;
-    border-radius: 50%;
-    transition: .4s;
-}
-
-input:checked + .toggle-slider {
-    background-color: var(--primary-color);
-}
-
-input:checked + .toggle-slider:before {
-    transform: translateX(20px);
 }
 
 /* Completion/Cancellation Statistics */
@@ -1955,56 +1900,6 @@ body {
     transition: background-color 0.3s ease, color 0.3s ease;
 }
 
-/* More visible theme toggle styling */
-.theme-toggle-container {
-    position: relative;
-    z-index: 9999;
-    display: inline-flex;
-    margin-left: 10px;
-    vertical-align: middle;
-}
-
-.theme-toggle-button {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    background-color: var(--primary-color);
-    color: #f0f8ff;
-    border: none;
-    border-radius: 30px;
-    padding: 8px 16px;
-    font-size: 14px;
-    font-weight: 500;
-    cursor: pointer;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
-    transition: all 0.3s ease;
-}
-
-.theme-toggle-button:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
-}
-
-.theme-toggle-button i {
-    font-size: 16px;
-}
-
-/* Mobile view adjustments */
-@media (max-width: 768px) {
-    .theme-toggle-container {
-        top: 10px;
-        right: 10px;
-    }
-    
-    .theme-toggle-button {
-        padding: 6px 12px;
-    }
-    
-    .theme-label {
-        display: none;
-    }
-}
-
 /* Dark Theme Variables */
 body {
     background-color: var(--bg-light);
@@ -2082,36 +1977,13 @@ select {
     box-shadow: 0 8px 15px rgba(0, 0, 0, 0.4);
 }
 
-
 .modal {
     background-color: rgba(0, 0, 0, 0.7);
 }
 
-
-
 .spinner {
     border-color: rgba(255, 255, 255, 0.1);
     border-top-color: var(--primary-color);
-}
-
-
-/* Updated sidebar header theme toggle styling */
-.sidebar-header .theme-toggle-container {
-    margin-left: 8px;
-}
-
-.sidebar-header .theme-toggle-button {
-    padding: 5px;
-    width: 30px;
-    height: 30px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    border-radius: 50%;
-}
-
-.sidebar-header .theme-toggle-button .theme-label {
-    display: none;
 }
 
 .sidebar-header .header-row h2 {
@@ -2490,26 +2362,4 @@ select {
     }
 }
 
-/* Delete Order Button */
-.delete-order-btn {
-    flex: 1;
-    padding: 12px;
-    border: none;
-    border-radius: 8px;
-    font-size: 14px;
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 8px;
-    transition: all 0.3s ease;
-    background: rgba(239, 68, 68, 0.1);
-    color: var(--error);
-}
 
-.delete-order-btn:hover {
-    background: var(--error);
-    color: var(--white);
-    transform: translateY(-2px);
-    box-shadow: 0 4px 12px var(--shadow-color);
-}

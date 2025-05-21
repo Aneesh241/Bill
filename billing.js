@@ -1,3 +1,8 @@
+/**
+ * Billing System Module
+ * Handles menu display, bill creation, payment processing, and order management
+ */
+
 document.addEventListener('DOMContentLoaded', () => {
     // Check authentication
     if (!sessionStorage.getItem('currentUser')) {
@@ -124,6 +129,7 @@ document.addEventListener('DOMContentLoaded', () => {
         ]
     };
 
+    // Initialize billing variables
     let currentBill = [];
     const GST_RATE = 0.05;
     let currentPaymentMethod = '';
@@ -135,6 +141,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // Initialize UI
     loadMenuItems('starters');
     setupEventListeners();
+
 
     function getNextBillNumber() {
         // Get all orders
@@ -219,16 +226,16 @@ document.addEventListener('DOMContentLoaded', () => {
             });
         } else {
             // For desserts, no toggle needed
-        menuData[category].forEach(item => {
-            const itemElement = document.createElement('div');
-            itemElement.className = 'menu-item';
-            itemElement.innerHTML = `
-                <h3>${item.name}</h3>
-                <p class="price">₹${item.price}</p>
-            `;
-            itemElement.onclick = () => addToBill(item);
-            menuContainer.appendChild(itemElement);
-        });
+            menuData[category].forEach(item => {
+                const itemElement = document.createElement('div');
+                itemElement.className = 'menu-item';
+                itemElement.innerHTML = `
+                    <h3>${item.name}</h3>
+                    <p class="price">₹${item.price}</p>
+                `;
+                itemElement.onclick = () => addToBill(item);
+                menuContainer.appendChild(itemElement);
+            });
         }
     }
 
@@ -282,6 +289,9 @@ document.addEventListener('DOMContentLoaded', () => {
         updateTotals();
     }
 
+    /**
+     * Updates the total amounts in the bill
+     */
     function updateTotals() {
         const subtotal = currentBill.reduce((sum, item) => sum + (item.price * item.quantity), 0);
         const gst = subtotal * GST_RATE;
@@ -464,6 +474,9 @@ document.addEventListener('DOMContentLoaded', () => {
         };
     }
 
+    /**
+     * Resets all payment sections to their default state
+     */
     function resetPaymentSections() {
         // Hide all payment specific sections
         document.getElementById('upiQRCode').style.display = 'none';
@@ -487,6 +500,10 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
+    /**
+     * Simulates the payment process for a given payment method
+     * @param {string} paymentMethod - The selected payment method
+     */
     function simulatePayment(paymentMethod) {
         const methodLower = paymentMethod.toLowerCase();
         let statusElement, spinnerElement, successIconElement;

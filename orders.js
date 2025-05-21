@@ -1,3 +1,8 @@
+/**
+ * Orders Management Module
+ * Handles the display, filtering, and management of orders in the system
+ */
+
 document.addEventListener('DOMContentLoaded', () => {
     // Check if user is logged in
     const currentUser = JSON.parse(sessionStorage.getItem('currentUser'));
@@ -10,7 +15,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const userNameElement = document.getElementById('userName');
     userNameElement.textContent = currentUser.name;
 
-    // Handle logout
+    // Handle logout functionality
     const logoutBtn = document.getElementById('logoutBtn');
     logoutBtn.addEventListener('click', (e) => {
         e.preventDefault();
@@ -23,7 +28,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const ordersContainer = document.getElementById('ordersContainer');
     const emptyOrdersMsg = document.querySelector('.empty-orders');
     
-    // Filter orders based on status
+    // Set up filter buttons for order status
     const filterBtns = document.querySelectorAll('.filter-btn');
     filterBtns.forEach(btn => {
         btn.addEventListener('click', () => {

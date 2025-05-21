@@ -131,24 +131,6 @@
             margin-bottom: 25px;
         }
         
-        .login-btn {
-            padding: 10px 20px;
-            background-color: var(--primary-color);
-            color: white;
-            border: none;
-            border-radius: 4px;
-            cursor: pointer;
-            font-weight: 500;
-            text-decoration: none;
-            display: inline-block;
-            transition: all 0.3s ease;
-        }
-        
-        .login-btn:hover {
-            background-color: var(--primary-dark);
-            transform: translateY(-2px);
-        }
-        
         .content-header {
             text-align: center;
             margin-bottom: 30px;
@@ -166,7 +148,7 @@
             <div class="header-row">
                 <h2>UID</h2>
             </div>
-            <p class="user-welcome">Welcome, Admin!</p>
+            <p class="user-welcome">Welcome, <span id="userName">User</span>!</p>
         </div>
         
         <ul class="sidebar-menu">

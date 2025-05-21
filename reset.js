@@ -1,9 +1,12 @@
 /**
- * Utility functions for resetting the billing system
- * These functions can be called from the console to quickly reset different aspects of the system
+ * Reset Module
+ * Handles system reset functionality for orders and transactions
  */
 
-// Reset only orders and transactions
+/**
+ * Resets all orders and transactions by clearing the orders from localStorage
+ * Shows appropriate feedback based on the context (UI or alert)
+ */
 function resetOrders() {
     localStorage.removeItem('orders');
     
@@ -33,7 +36,10 @@ function showResetComplete(message) {
     }
 }
 
-// Initialize event listeners if we're on the reset page
+/**
+ * Initializes the reset page functionality
+ * Sets up event listeners and checks user authentication
+ */
 function initResetPage() {
     // Only proceed if we're on the reset page
     if (!document.getElementById('resetOptions')) return;
@@ -51,7 +57,7 @@ function initResetPage() {
         userNameElement.textContent = currentUser.name;
     }
     
-    // Button listeners
+    // Set up back button to return to dashboard
     const backBtn = document.getElementById('backBtn');
     if (backBtn) {
         backBtn.addEventListener('click', () => {
@@ -59,6 +65,7 @@ function initResetPage() {
         });
     }
     
+    // Set up reset orders button with confirmation
     const resetOrdersBtn = document.getElementById('resetOrdersBtn');
     if (resetOrdersBtn) {
         resetOrdersBtn.addEventListener('click', () => {
@@ -68,7 +75,7 @@ function initResetPage() {
         });
     }
     
-    // Handle logout
+    // Handle logout functionality
     const logoutBtn = document.getElementById('logoutBtn');
     if (logoutBtn) {
         logoutBtn.addEventListener('click', (e) => {
