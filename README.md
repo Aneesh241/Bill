@@ -186,7 +186,6 @@ Billing System/
 │   └── images/
 │       ├── background.jpg      # Auth page background
 │       └── upi-qr.png         # UPI payment QR code
-├── .vscode/                   # VS Code configuration
 ├── index.html                 # Landing/Authentication page
 ├── auth.js                    # Authentication logic & session management
 ├── billing.html               # Advanced billing interface
@@ -305,5 +304,6 @@ Billing System/
 This is an end semester project. For any suggestions or improvements, please contact the developer.
 
 ## License
+
 
 This project is created for educational purposes.
