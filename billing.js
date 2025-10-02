@@ -133,6 +133,8 @@ document.addEventListener('DOMContentLoaded', () => {
     let currentBill = [];
     const GST_RATE = 0.05;
     let currentPaymentMethod = '';
+    let isPaymentProcessing = false;
+    let paymentTimers = { processingTimeout: null, successTimeout: null };
 
     // Get the next bill number
     let billNumber = getNextBillNumber();
@@ -141,6 +143,50 @@ document.addEventListener('DOMContentLoaded', () => {
     // Initialize UI
     loadMenuItems('starters');
     setupEventListeners();
+
+    /**
+     * Sets up scroll progress indicator for menu items
+     */
+    function setupScrollProgress() {
+        const menuItems = document.getElementById('menuItems');
+        const menuContainer = document.querySelector('.menu-container');
+        
+        if (!menuItems || !menuContainer) return;
+        
+        menuItems.addEventListener('scroll', () => {
+            const scrollTop = menuItems.scrollTop;
+            const scrollHeight = menuItems.scrollHeight - menuItems.clientHeight;
+            const scrollPercentage = scrollHeight > 0 ? (scrollTop / scrollHeight) * 100 : 0;
+            
+            // Update progress indicator
+            menuContainer.style.setProperty('--scroll-progress', scrollPercentage + '%');
+            
+            // Add scrolling class for visual feedback
+            if (scrollTop > 10) {
+                menuContainer.classList.add('scrolling');
+            } else {
+                menuContainer.classList.remove('scrolling');
+            }
+            
+            // Update the progress bar height
+            const progressBar = menuContainer.querySelector('::before');
+            if (menuContainer.classList.contains('scrolling')) {
+                menuContainer.style.setProperty('--progress-height', scrollPercentage + '%');
+            }
+        });
+        
+        // Add smooth scroll on item click for better UX
+        const menuItemElements = menuItems.querySelectorAll('.menu-item');
+        menuItemElements.forEach((item, index) => {
+            item.addEventListener('click', () => {
+                // Add a subtle bounce effect when item is clicked
+                item.style.transform = 'scale(0.95)';
+                setTimeout(() => {
+                    item.style.transform = '';
+                }, 150);
+            });
+        });
+    }
 
 
     function getNextBillNumber() {
@@ -164,6 +210,10 @@ document.addEventListener('DOMContentLoaded', () => {
     function loadMenuItems(category) {
         const menuContainer = document.getElementById('menuItems');
         menuContainer.innerHTML = '';
+
+        // Add a loading animation
+        menuContainer.style.opacity = '0.5';
+        menuContainer.style.transform = 'translateY(10px)';
 
         // Hide all toggle containers first
         document.getElementById('startersToggleContainer').style.display = 'none';
@@ -225,10 +275,11 @@ document.addEventListener('DOMContentLoaded', () => {
                 menuContainer.appendChild(itemElement);
             });
         } else {
-            // For desserts, no toggle needed
-            menuData[category].forEach(item => {
+            // For desserts, no toggle needed - enhanced with smooth animations
+            menuData[category].forEach((item, index) => {
                 const itemElement = document.createElement('div');
                 itemElement.className = 'menu-item';
+                itemElement.style.animationDelay = `${(index * 0.05) + 0.1}s`;
                 itemElement.innerHTML = `
                     <h3>${item.name}</h3>
                     <p class="price">₹${item.price}</p>
@@ -237,6 +288,16 @@ document.addEventListener('DOMContentLoaded', () => {
                 menuContainer.appendChild(itemElement);
             });
         }
+
+        // Smooth transition back after loading
+        setTimeout(() => {
+            menuContainer.style.opacity = '1';
+            menuContainer.style.transform = 'translateY(0)';
+            menuContainer.style.transition = 'all 0.3s cubic-bezier(0.4, 0, 0.2, 1)';
+            
+            // Add scroll progress indicator for desserts and other categories
+            setupScrollProgress();
+        }, 100);
     }
 
     function addToBill(item) {
@@ -325,7 +386,7 @@ document.addEventListener('DOMContentLoaded', () => {
             });
         }
 
-        // Category tabs
+        // Category tabs with enhanced scrolling
         document.querySelectorAll('.category-tab').forEach(tab => {
             tab.addEventListener('click', () => {
                 document.querySelectorAll('.category-tab').forEach(t => {
@@ -334,6 +395,16 @@ document.addEventListener('DOMContentLoaded', () => {
                 });
                 tab.classList.add('active');
                 tab.setAttribute('aria-pressed', 'true');
+                
+                // Smooth scroll to top of menu items when switching categories
+                const menuContainer = document.getElementById('menuItems');
+                if (menuContainer) {
+                    menuContainer.scrollTo({
+                        top: 0,
+                        behavior: 'smooth'
+                    });
+                }
+                
                 loadMenuItems(tab.dataset.category);
             });
         });
@@ -413,6 +484,12 @@ document.addEventListener('DOMContentLoaded', () => {
         // Payment methods
         document.querySelectorAll('.payment-method').forEach(method => {
             method.onclick = () => {
+                // Prevent multiple payment processing
+                if (isPaymentProcessing) {
+                    // Clear previous timers and reset before starting new payment
+                    resetPaymentSections();
+                }
+                
                 // Hide all payment method specific sections first
                 resetPaymentSections();
                 
@@ -422,6 +499,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 method.classList.add('active');
                 
                 currentPaymentMethod = method.dataset.method;
+                isPaymentProcessing = true;
                 
                 if (method.dataset.method === 'upi') {
                     document.getElementById('upiQRCode').style.display = 'block';
@@ -478,6 +556,19 @@ document.addEventListener('DOMContentLoaded', () => {
      * Resets all payment sections to their default state
      */
     function resetPaymentSections() {
+        // Clear any existing payment timers to prevent duplicate orders
+        if (paymentTimers.processingTimeout) {
+            clearTimeout(paymentTimers.processingTimeout);
+            paymentTimers.processingTimeout = null;
+        }
+        if (paymentTimers.successTimeout) {
+            clearTimeout(paymentTimers.successTimeout);
+            paymentTimers.successTimeout = null;
+        }
+        
+        // Reset payment processing flag
+        isPaymentProcessing = false;
+        
         // Hide all payment specific sections
         document.getElementById('upiQRCode').style.display = 'none';
         document.getElementById('cardPaymentSection').style.display = 'none';
@@ -556,14 +647,15 @@ document.addEventListener('DOMContentLoaded', () => {
 
         // Handle cancel payment button functionality
         const cancelPaymentBtn = document.querySelector(`#${getPaymentSectionId(methodLower)} .cancel-payment-btn`);
-        let processingTimeout;
-        let successTimeout;
         
         if (cancelPaymentBtn) {
             // Add click event to cancel payment
             const cancelHandler = () => {
-                clearTimeout(processingTimeout);
-                clearTimeout(successTimeout);
+                clearTimeout(paymentTimers.processingTimeout);
+                clearTimeout(paymentTimers.successTimeout);
+                paymentTimers.processingTimeout = null;
+                paymentTimers.successTimeout = null;
+                isPaymentProcessing = false;
                 statusElement.textContent = 'Payment cancelled';
                 statusElement.classList.remove('success-message');
                 spinnerElement.style.display = 'none';
@@ -585,7 +677,10 @@ document.addEventListener('DOMContentLoaded', () => {
         }
 
         // Simulate payment processing
-        processingTimeout = setTimeout(() => {
+        paymentTimers.processingTimeout = setTimeout(() => {
+            // Check if payment is still being processed (not cancelled)
+            if (!isPaymentProcessing) return;
+            
             // Show success
             if (statusElement) {
                 statusElement.textContent = 'Payment successful!';
@@ -607,11 +702,13 @@ document.addEventListener('DOMContentLoaded', () => {
                 cancelPaymentBtn.style.opacity = '0.5';
             }
 
-            // Save order
-            saveOrder(paymentMethod);
+            // Save order only if payment is still being processed
+            if (isPaymentProcessing) {
+                saveOrder(paymentMethod);
+            }
 
             // Clear bill after successful payment
-            successTimeout = setTimeout(() => {
+            paymentTimers.successTimeout = setTimeout(() => {
                 currentBill = [];
                 updateBillDisplay();
                 updateTotals();
@@ -624,6 +721,11 @@ document.addEventListener('DOMContentLoaded', () => {
                 billNumber = getNextBillNumber();
                 const billNumberElement = document.getElementById('billNumber');
                 if (billNumberElement) billNumberElement.textContent = billNumber;
+                
+                // Reset payment processing flag
+                isPaymentProcessing = false;
+                paymentTimers.processingTimeout = null;
+                paymentTimers.successTimeout = null;
             }, 2000);
         }, 3000);
     }

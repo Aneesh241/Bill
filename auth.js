@@ -36,7 +36,7 @@ document.addEventListener('DOMContentLoaded', () => {
         if (username === 'admin' && password === 'admin@123') {
             // Store user session
             sessionStorage.setItem('currentUser', JSON.stringify({ 
-                name: 'Nikil',
+                name: 'Admin',
             }));
             // Redirect to dashboard on successful login
             window.location.href = 'dashboard.html';

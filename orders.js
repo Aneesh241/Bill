@@ -26,7 +26,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // Load orders from localStorage
     let orders = JSON.parse(localStorage.getItem('orders') || '[]');
     const ordersContainer = document.getElementById('ordersContainer');
-    const emptyOrdersMsg = document.querySelector('.empty-orders');
+    const emptyOrdersMsg = document.querySelector('.empty-orders'); 
     
     // Set up filter buttons for order status
     const filterBtns = document.querySelectorAll('.filter-btn');
@@ -227,7 +227,7 @@ document.addEventListener('DOMContentLoaded', () => {
         
         if (order.status === 'pending') {
             // Add Complete Order button
-            const completeBtn = document.createElement('button');
+            const completeBtn = document.createElement('button');   
             completeBtn.className = 'complete-order-btn';
             completeBtn.innerHTML = '<i class="fas fa-check"></i> Mark as Completed';
             completeBtn.addEventListener('click', () => {
