@@ -1,6 +1,6 @@
-# UID Restaurant Management System
+# Tabrix – Restaurant Management System
 
-A modern, comprehensive web-based billing and restaurant management system developed as an end-semester project. This system provides a complete solution for managing restaurant operations with an emphasis on premium user experience, featuring advanced animations, responsive design, and intuitive interfaces for efficient restaurant management.
+A modern, comprehensive web-based billing and restaurant management system developed as an end-semester project for the subject User Interface and Design (UID) . This system provides a complete solution for managing restaurant operations with an emphasis on premium user experience, featuring advanced animations, responsive design, and intuitive interfaces for efficient restaurant management.
 
 ## Features
 
@@ -41,7 +41,7 @@ A modern, comprehensive web-based billing and restaurant management system devel
   - Animated payment status indicators with spinners and success icons
   - Loading animations with cancellation options
   - Success confirmations with visual feedback
-  - Automatic bill number generation (UID001, UID002, etc.)
+  - Automatic bill number generation (TBX001, TBX002, etc.)
   - Seamless order completion handling
 
 ### 4. Enhanced Order Management System
@@ -56,7 +56,7 @@ A modern, comprehensive web-based billing and restaurant management system devel
   - Real-time order status management with instant visual updates
   - Professional rounded card design with proper spacing
 - **Order Details**:
-  - Auto-generated bill numbers with unique UID prefix (UID001, UID002, etc.)
+  - Auto-generated bill numbers with unique Tabrix prefix (TBX001, TBX002, etc.)
   - Comprehensive date/time tracking with formatted display
   - Detailed itemized breakdown with quantities, prices, and totals
   - Payment method indicators with visual icons
@@ -304,6 +304,5 @@ Billing System/
 This is an end semester project. For any suggestions or improvements, please contact the developer.
 
 ## License
-
 
 This project is created for educational purposes.

@@ -447,7 +447,7 @@ document.addEventListener('DOMContentLoaded', () => {
             </head>
             <body>
                 <div class="invoice-header">
-                    <h1>UID Restaurant</h1>
+                    <h1>Tabrix Restaurant</h1>
                     <p>Invoice #${order.billNumber}</p>
                 </div>
                 
@@ -495,7 +495,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 
                 <div class="footer">
                     <p>Thank you for dining with us!</p>
-                    <p>UID Restaurant - Your favorite dining destination</p>
+                    <p>Tabrix Restaurant - Your favorite dining destination</p>
                 </div>
                 
                 <div class="no-print" style="text-align: center; margin-top: 20px;">

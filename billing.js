@@ -196,7 +196,11 @@ document.addEventListener('DOMContentLoaded', () => {
         // Find the highest bill number
         let highestBillNumber = 0;
         orders.forEach(order => {
-            const orderBillNumber = parseInt(order.billNumber.replace('UID', ''));
+            // Support both legacy 'UID' and new 'TBX' prefixes
+            const numeric = order.billNumber
+                .replace('UID', '')
+                .replace('TBX', '');
+            const orderBillNumber = parseInt(numeric);
             if (orderBillNumber > highestBillNumber) {
                 highestBillNumber = orderBillNumber;
             }
@@ -204,7 +208,8 @@ document.addEventListener('DOMContentLoaded', () => {
         
         // Return the next bill number
         const nextBillNumber = highestBillNumber + 1;
-        return 'UID' + String(nextBillNumber).padStart(3, '0');
+        // Use new Tabrix prefix
+        return 'TBX' + String(nextBillNumber).padStart(3, '0');
     }
 
     function loadMenuItems(category) {
