@@ -301,8 +301,9 @@ Billing System/
 
 ## Contributing 
 
-This is an end semester project. For any suggestions or improvements, please contact the developer.
+This is a User Interface and Design (UID) end semester project. For any suggestions or improvements, please contact the developer.
 
 ## License
+
 
 This project is created for educational purposes.
